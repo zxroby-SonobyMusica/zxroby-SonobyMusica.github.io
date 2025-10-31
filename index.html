@@ -4,104 +4,164 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kumpulan Lirik Lagu – SonobyMusica</title>
-  <meta name="description" content="Kumpulan lirik lagu resmi Sonoby dengan arti dan terjemahan." />
+  <meta name="description" content="Kumpulan lirik lagu Sonoby lengkap dengan arti/terjemahan dan info rilis." />
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #0f1116;
-      color: #fff;
+    :root{
+      --bg:#0f1116;--panel:#12151c;--panel2:#1b2130;--text:#fff;--muted:#b6c0d7;--border:#232a3a;--accent:#1ed760;
     }
-    header {
-      background: #12151c;
-      padding: 20px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    header h1 {
-      font-size: 22px;
-      color: #1ed760;
-      margin: 0;
-    }
-    nav a {
-      color: #ccc;
-      text-decoration: none;
-      margin-left: 20px;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: #fff;
-    }
-    main {
-      max-width: 900px;
-      margin: 80px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-    h2 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #b6c0d7;
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 40px;
-    }
-    button {
-      background: #1ed760;
-      color: #0f1116;
-      border: none;
-      padding: 14px 30px;
-      border-radius: 30px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    button:hover {
-      filter: brightness(1.1);
-    }
-    footer {
-      background: #12151c;
-      color: #ccc;
-      text-align: center;
-      padding: 40px 0;
-      margin-top: 80px;
-      border-top: 1px solid #232a3a;
-    }
-    a.email {
-      color: #1ed760;
-      text-decoration: none;
-    }
-    a.email:hover {
-      text-decoration: underline;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif}
+    /* Header */
+    .top{background:var(--panel); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:10}
+    .top .inner{display:flex;align-items:center;gap:20px; padding:16px 20px; max-width:1100px; margin:0 auto}
+    .logo{font-weight:800;color:var(--accent)}
+    .nav a{color:var(--muted);text-decoration:none;font-weight:600;margin-right:16px}
+    .nav a.active,.nav a:hover{color:var(--text)}
+
+    /* Subnav like tabs */
+    .tabs{background:#0b0e14;border-bottom:1px solid var(--border)}
+    .tabs .inner{max-width:1100px;margin:0 auto;display:flex;gap:16px;padding:10px 20px}
+    .tabs a{color:#d6deffb3;text-decoration:none;padding:8px 12px;border-radius:6px}
+    .tabs a.active{background:var(--panel2);color:#fff}
+
+    main{max-width:1100px;margin:28px auto 90px;padding:0 20px}
+
+    /* Breadcrumb */
+    .crumb{color:var(--muted);font-size:13px;margin-bottom:6px}
+    .crumb a{color:var(--muted);text-decoration:none}
+
+    /* Title */
+    .title{display:flex;align-items:end;justify-content:space-between;gap:12px}
+    h1{margin:6px 0 12px;font-size:28px}
+
+    /* Search box */
+    .searchBox{display:flex;gap:8px;flex-wrap:wrap;background:var(--panel2);border:1px solid var(--border);padding:10px;border-radius:10px}
+    .searchBox input,.searchBox select{background:#0d1220;border:1px solid var(--border);color:var(--text);padding:10px;border-radius:8px}
+    .searchBox input{flex:1;min-width:200px}
+    .btn{background:var(--accent);border:none;color:#0f1116;padding:10px 16px;border-radius:8px;font-weight:700;cursor:pointer}
+
+    /* List */
+    .list{margin-top:18px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:12px 14px;border-bottom:1px solid var(--border);text-align:left}
+    th{background:#0b0f18;color:#c9d5ffb3;font-weight:700}
+    tbody tr:hover{background:#141b29}
+    .badge{border:1px solid var(--border);color:var(--muted);padding:4px 8px;border-radius:999px;font-size:12px}
+
+    footer{background:var(--panel);border-top:1px solid var(--border);color:var(--muted);text-align:center;padding:26px}
+    footer a{color:var(--accent);text-decoration:none}
   </style>
 </head>
 <body>
-  <header>
-    <h1>SonobyMusica</h1>
-    <nav>
-      <a href="#">Home</a>
-      <a href="mailto:zxroby@gmail.com">Contact</a>
-    </nav>
+  <!-- Header -->
+  <header class="top">
+    <div class="inner">
+      <div class="logo">SonobyMusica</div>
+      <nav class="nav" aria-label="Main">
+        <a class="active" href="#">Lirik</a>
+        <a href="mailto:zxroby@gmail.com">Contact</a>
+      </nav>
+    </div>
   </header>
 
+  <!-- Tabs ala portal (HOME | LIRIK)  -->
+  <div class="tabs" role="tablist">
+    <div class="inner">
+      <a href="#" class="active" role="tab">LIRIK</a>
+    </div>
+  </div>
+
   <main>
-    <h2>Kumpulan Lirik Lagu</h2>
-    <p>
-      Temukan lirik resmi dari semua lagu Sonoby, lengkap dengan arti dan terjemahannya. 
-      Situs ini dibuat sebagai arsip resmi untuk kamu yang ingin membaca makna di balik setiap karya.
-    </p>
-    <button>Jelajahi Lagu</button>
+    <div class="crumb">Home » <strong>Lirik Lagu Sonoby</strong></div>
+    <div class="title">
+      <h1>Lirik Lagu Sonoby</h1>
+      <span class="badge" id="countBadge">0 lagu</span>
+    </div>
+
+    <!-- Search/Filter -->
+    <form class="searchBox" id="formSearch" onsubmit="event.preventDefault()">
+      <input id="q" placeholder="Cari judul / potongan lirik…" aria-label="Cari" />
+      <select id="lang" aria-label="Bahasa">
+        <option value="">Semua Bahasa</option>
+        <option value="id">Indonesia</option>
+        <option value="en">Inggris</option>
+        <option value="jp">Jepang</option>
+      </select>
+      <select id="type" aria-label="Tipe">
+        <option value="">Semua Tipe</option>
+        <option value="lirik">Lirik</option>
+        <option value="arti">Arti/Terjemahan</option>
+      </select>
+      <button class="btn" id="btnCari">Cari</button>
+    </form>
+
+    <!-- List -->
+    <div class="list">
+      <table aria-label="Daftar Lirik">
+        <thead>
+          <tr>
+            <th style="width:44%">Judul</th>
+            <th>Bahasa</th>
+            <th>Rilis</th>
+            <th style="width:28%">Tautan</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
   </main>
 
   <footer>
-    <p>Hubungi kami di <a href="mailto:zxroby@gmail.com" class="email">zxroby@gmail.com</a></p>
-    <p>© 2025 SonobyMusica. All rights reserved.</p>
+    Hubungi: <a href="mailto:zxroby@gmail.com">zxroby@gmail.com</a> • © 2025 SonobyMusica
   </footer>
+
+  <script>
+    // ===== Contoh data (ganti dengan data asli) =====
+    const DATA = [
+      {title:'Sisi Yang Tak Diceritakan', slug:'sisi-yang-tak-diceritakan', lang:'id', date:'2025-10-10', type:'lirik', lyric:'Pelan-pelan ku belajar…', url:'/lyrics/sisi-yang-tak-diceritakan.html', spotify:'https://open.spotify.com/'},
+      {title:'Tetap Kau Pilih Dia', slug:'tetap-kau-pilih-dia', lang:'id', date:'2025-09-05', type:'lirik', lyric:'Kau tetap memilih dia…', url:'/lyrics/tetap-kau-pilih-dia.html', spotify:'https://open.spotify.com/'},
+      {title:'Peluklah Dirimu', slug:'peluklah-dirimu', lang:'id', date:'2025-09-25', type:'lirik', lyric:'Peluklah dirimu, kau tak sendiri…', url:'/lyrics/peluklah-dirimu.html', spotify:'https://open.spotify.com/'},
+      {title:'Koenaki Hikari', slug:'koenaki-hikari', lang:'jp', date:'2025-08-14', type:'lirik', lyric:'焦れない光…', url:'/lyrics/koenaki-hikari.html', spotify:'https://open.spotify.com/'},
+      {title:'Hold On (English Ver.)', slug:'hold-on-en', lang:'en', date:'2025-07-20', type:'arti', lyric:'I will hold on…', url:'/lyrics/hold-on-en.html', spotify:'https://open.spotify.com/'}
+    ];
+
+    const tbody = document.getElementById('tbody');
+    const badge = document.getElementById('countBadge');
+
+    function fmt(d){
+      const dt = new Date(d); const m=dt.toLocaleString('id-ID',{month:'short'}); return `${dt.getDate()} ${m} ${dt.getFullYear()}`;
+    }
+
+    function render(rows){
+      tbody.innerHTML = rows.map(r=>`
+        <tr>
+          <td><a style="color:#fff; text-decoration:none" href="${r.url}"><strong>${r.title}</strong></a><div style="color:#9fb0d0; font-size:12px; margin-top:4px;">${(r.lyric||'').slice(0,70)}…</div></td>
+          <td>${r.lang.toUpperCase()}</td>
+          <td>${fmt(r.date)}</td>
+          <td>
+            <a href="${r.url}" style="color:#9ad5ff; text-decoration:none; margin-right:12px">Baca Lirik</a>
+            <a href="${r.spotify}" style="color:#1ed760; text-decoration:none">Spotify</a>
+          </td>
+        </tr>`).join('');
+      badge.textContent = `${rows.length} lagu`;
+    }
+
+    function applyFilter(){
+      const q = document.getElementById('q').value.toLowerCase();
+      const lang = document.getElementById('lang').value;
+      const type = document.getElementById('type').value;
+      const out = DATA.filter(x =>
+        (!lang || x.lang===lang) && (!type || x.type===type) &&
+        (!q || (x.title+" "+(x.lyric||"")).toLowerCase().includes(q))
+      ).sort((a,b)=> new Date(b.date)-new Date(a.date));
+      render(out);
+    }
+
+    document.getElementById('btnCari').addEventListener('click', applyFilter);
+    ['q','lang','type'].forEach(id=>document.getElementById(id).addEventListener('input', applyFilter));
+
+    // First render
+    render(DATA.sort((a,b)=> new Date(b.date)-new Date(a.date)));
+  </script>
 </body>
 </html>
