@@ -3,106 +3,58 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sonoby Musica — Official Lyrics & Music</title>
-  <meta name="description" content="Lirik resmi dan rilisan Sonoby Musica. Baca lirik, arti lagu, dan dengarkan di Spotify & YouTube Music.">
-  <meta property="og:title" content="Sonoby Musica — Official Lyrics & Music">
-  <meta property="og:description" content="Lirik resmi dan rilisan Sonoby Musica.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://zxrobysonobymusica.github.io/">
+  <title>Sonoby Musica — Lyrics & Releases</title>
+  <meta name="description" content="Daftar lirik resmi Sonoby Musica. Cari lagu, baca lirik & arti/terjemahan, dengarkan di Spotify.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css" />
-
-  <!-- Schema: MusicGroup -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"MusicGroup",
-    "name":"Sonoby Musica",
-    "url":"https://zxrobysonobymusica.github.io/",
-    "sameAs":[
-      "https://open.spotify.com/artist/XXXXXXXX", 
-      "https://music.youtube.com/channel/XXXXXXXX"
-    ]
-  }
-  </script>
 </head>
 <body>
-  <!-- NAV -->
   <header class="nav">
     <a class="brand" href="/">Sonoby<span>Musica</span></a>
     <nav>
       <a href="#songs">Songs</a>
       <a href="#about">About</a>
-      <a class="btn" href="https://open.spotify.com/artist/XXXXXXXX" target="_blank" rel="noopener">Spotify</a>
+      <a class="btn" target="_blank" rel="noopener" href="https://open.spotify.com/artist/PUT_SPOTIFY_ARTIST_ID">Spotify</a>
     </nav>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero__bg"></div>
     <div class="hero__content">
       <h1>Official Lyrics & Releases</h1>
-      <p>Temukan lirik, arti & tautan streaming dari setiap rilisan Sonoby Musica.</p>
+      <p>Cari lagu, baca lirik + arti/terjemahan, dan dengarkan di DSP.</p>
       <div class="hero__cta">
         <a class="btn" href="#songs">Jelajah Lagu</a>
-        <a class="btn btn--ghost" href="#about">Tentang</a>
       </div>
     </div>
   </section>
 
-  <!-- SONGS -->
   <main id="songs" class="container">
-    <h2 class="section-title">Lagu Terbaru</h2>
-
-    <div class="grid">
-      <!-- CARD 1 -->
-      <article class="card">
-        <div class="card__badge">New</div>
-        <h3>Peluklah Dirimu</h3>
-        <p>Lirik + arti & embed Spotify.</p>
-        <div class="card__actions">
-          <a class="btn" href="songs/peluklah-dirimu.html">Baca Lirik</a>
-          <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://open.spotify.com/track/PUT_SPOTIFY_TRACK_ID">Dengarkan</a>
-        </div>
-      </article>
-
-      <!-- Duplikasi kartu untuk lagu lain -->
-      <article class="card">
-        <h3>Kau Tak Sendiri</h3>
-        <p>Halaman lirik segera hadir.</p>
-        <div class="card__actions">
-          <a class="btn is-disabled">Segera</a>
-        </div>
-      </article>
-
-      <article class="card">
-        <h3>Cukup Kucintai</h3>
-        <p>Halaman lirik segera hadir.</p>
-        <div class="card__actions">
-          <a class="btn is-disabled">Segera</a>
-        </div>
-      </article>
+    <div class="toolbar">
+      <h2 class="section-title">Daftar Lagu</h2>
+      <input id="q" class="search" type="search" placeholder="Cari judul / bahasa (id, en, ja, ...)" />
     </div>
+
+    <div id="grid" class="grid"><!-- cards diisi via JS --></div>
+    <p id="empty" class="muted" style="display:none">Tidak ada lagu yang cocok.</p>
   </main>
 
-  <!-- ABOUT -->
   <section id="about" class="about container">
-    <h2 class="section-title">Tentang Sonoby Musica</h2>
-    <p>Project musik independen yang menggabungkan penulisan lirik personal dengan aransemen modern. Rilisan didistribusikan melalui SoundOn ke Spotify dan YouTube Music.</p>
+    <h2 class="section-title">Tentang</h2>
+    <p>Proyek independen. Lirik ditulis Roby Suratna, rilisan melalui SoundOn ke Spotify/YouTube Music.</p>
     <ul class="meta">
-      <li><strong>Penulis/Composer:</strong> Roby Suratna</li>
+      <li><strong>Songwriter:</strong> Roby Suratna</li>
       <li><strong>Label:</strong> Sonoby AI Records</li>
       <li><strong>Kontak:</strong> zxroby@gmail.com</li>
     </ul>
   </section>
 
   <footer class="footer">
-    <p>© <span id="y"></span> Sonoby Musica · Built with GitHub Pages</p>
+    <p>© <span id="y"></span> Sonoby Musica · GitHub Pages</p>
   </footer>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script src="assets/app.js" defer></script>
 </body>
 </html>
