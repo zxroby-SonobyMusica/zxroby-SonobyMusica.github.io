@@ -3,385 +3,105 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sonoby – Official Lyrics & Releases</title>
-  <meta name="description" content="Cari lagu Sonoby, baca lirik + arti/terjemahan, dan dengarkan di DSP." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%2301D35A'/%3E%3C/svg%3E"/>
+  <title>Kumpulan Lirik Lagu – SonobyMusica</title>
+  <meta name="description" content="Kumpulan lirik lagu resmi Sonoby dengan arti dan terjemahan." />
   <style>
-    :root {
-      --bg: #0f1116;              /* dasar hitam ke-abu */
-      --panel: #12151c;           /* panel gelap */
-      --panel-2: #1a1f2b;         /* panel sedikit terang */
-      --text: #ffffff;            /* teks utama */
-      --muted: #b6c0d7;           /* teks sekunder */
-      --accent: #1ed760;          /* hijau Spotify-ish */
-      --accent-2: #3a85ff;        /* biru aksen */
-      --card: #0b0e14;            /* kartu */
-      --border: #232a3a;          /* garis */
-    }
-
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
     body {
-      margin: 0; background: var(--bg); color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #0f1116;
+      color: #fff;
     }
-
-    /* Top bar */
-    .topbar {
-      position: sticky; top: 0; z-index: 30;
-      display: flex; align-items: center; gap: 12px;
-      height: 64px; padding: 0 16px; background: rgba(15,17,22,.75); backdrop-filter: saturate(120%) blur(6px);
-      border-bottom: 1px solid var(--border);
+    header {
+      background: #12151c;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
-    .brand { font-weight: 800; letter-spacing: .2px; }
-    .brand span { color: var(--accent); }
-    .nav { margin-left: auto; display: flex; gap: 12px; align-items: center; }
-    .nav a { color: var(--muted); text-decoration: none; padding: 8px 10px; border-radius: 8px; }
-    .nav a.active, .nav a:hover { background: var(--panel-2); color: var(--text); }
-    .search {
-      display: flex; align-items: center; gap: 10px; width: min(560px, 55vw);
-      background: var(--panel-2); border: 1px solid var(--border);
-      padding: 10px 12px; border-radius: 12px;
+    header h1 {
+      font-size: 22px;
+      color: #1ed760;
+      margin: 0;
     }
-    .search input { flex: 1; background: transparent; color: var(--text); border: 0; outline: none; font-size: 14.5px; }
-
-    /* Layout */
-    .wrap { display: grid; grid-template-columns: 1fr 320px; gap: 18px; width: min(1200px, 94vw); margin: 18px auto 92px; }
-    @media (max-width: 980px) {
-      .wrap { grid-template-columns: 1fr; }
-      .side { order: 2; }
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
     }
-
-    /* Artist hero */
-    .hero {
-      border-radius: 18px; overflow: hidden; position: relative; border: 1px solid var(--border);
-      background: radial-gradient(1200px 400px at -10% -30%, #7d5cff55 0%, transparent 40%),
-                  radial-gradient(800px 300px at 110% -10%, #00ffa977 0%, transparent 45%),
-                  linear-gradient(180deg, #1b2130 0%, #11151e 100%);
+    nav a:hover {
+      color: #fff;
     }
-    .hero-inner { padding: clamp(20px, 5vw, 36px); display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: end; }
-    .avatar {
-      width: 120px; height: 120px; border-radius: 12px; background: #353b4a; flex: none; overflow: hidden; border: 1px solid var(--border);
-      display: grid; place-items: center;
+    main {
+      max-width: 900px;
+      margin: 80px auto;
+      padding: 0 20px;
+      text-align: center;
     }
-    .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .artist h1 { margin: 0; font-size: clamp(28px, 4vw, 56px); line-height: 1.05; letter-spacing: .2px; }
-    .verified {
-      display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 14px; margin-top: 6px;
+    h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
     }
-    .verified svg { width: 16px; height: 16px; }
-    .stats { margin-top: 6px; color: var(--muted); font-size: 14px; }
-
-    .controls { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; border: 1px solid var(--border); background: var(--panel);
-           color: var(--text); padding: 10px 14px; border-radius: 999px; font-weight: 600; }
-    .btn:hover { background: #171b25; }
-    .btn.play { background: var(--accent); color: #0d1117; border: none; }
-    .btn.play:hover { filter: brightness(1.08); }
-    .btn svg { width: 16px; height: 16px; }
-
-    /* Section title */
-    .section-title { display:flex; align-items:center; justify-content:space-between; margin:22px 6px 12px; }
-    .section-title h2 { margin:0; font-size: 20px; letter-spacing:.3px; }
-
-    /* Tracks table */
-    .table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
-    .table th, .table td { padding: 12px 14px; font-size: 14px; border-bottom: 1px solid var(--border); text-align: left; }
-    .table tr:last-child td { border-bottom: none; }
-    .row { cursor: pointer; }
-    .row:hover { background: #151924; }
-    .idx { width: 32px; color: var(--muted); }
-    .thumb { width: 42px; height: 42px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background:#2b3244; }
-    .thumb img { width:100%; height:100%; object-fit: cover; display:block; }
-    .title { font-weight: 600; }
-    .subtitle { color: var(--muted); font-size: 12px; margin-top: 2px; }
-    .duration { color: var(--muted); text-align: right; }
-
-    /* Sidebar */
-    .side { display: grid; gap: 14px; }
-    .card { background: var(--card); border:1px solid var(--border); border-radius: 14px; overflow: hidden; }
-    .card .img { aspect-ratio: 1.2/1; background:#1c2433; display:block; width:100%; object-fit: cover; }
-    .card .body { padding: 14px; }
-    .card h3 { margin: 0 0 6px; font-size: 16px; }
-    .card p { margin: 0; color: var(--muted); font-size: 13px; }
-
-    /* Player bar */
-    .player {
-      position: fixed; left: 0; right: 0; bottom: 0; height: 84px; z-index: 40;
-      background: linear-gradient(180deg, rgba(10,12,17,.4) 0%, rgba(10,12,17,.9) 60%);
-      border-top: 1px solid var(--border);
-      display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding: 0 16px;
+    p {
+      color: #b6c0d7;
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 40px;
     }
-    .now { display:flex; align-items:center; gap:12px; min-width:0; }
-    .now .meta { min-width:0; }
-    .now .meta .t { font-weight:600; font-size:14px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .now .meta .s { color:var(--muted); font-size:12px; }
-    .pctrl { display:flex; align-items:center; gap:10px; }
-    .pbtn { width:36px; height:36px; border-radius:999px; display:grid; place-items:center; background:var(--panel-2); border:1px solid var(--border); cursor:pointer; }
-    .pbtn.primary { background: var(--accent); border:none; }
-    .bar { display:flex; align-items:center; gap:10px; }
-    .range { -webkit-appearance:none; appearance:none; width: min(520px, 45vw); height: 4px; background:#2a3244; border-radius:6px; outline:none; }
-    .range::-webkit-slider-thumb{ -webkit-appearance:none; width:14px; height:14px; border-radius:50%; background:var(--accent); cursor:pointer; border:none; }
-
-    /* Tiny helpers */
-    .tag { border:1px solid var(--border); color:var(--muted); padding:6px 8px; border-radius:999px; font-size:12px; }
-    .muted { color: var(--muted); }
-    .link { color: var(--text); text-decoration:none; }
+    button {
+      background: #1ed760;
+      color: #0f1116;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 30px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover {
+      filter: brightness(1.1);
+    }
+    footer {
+      background: #12151c;
+      color: #ccc;
+      text-align: center;
+      padding: 40px 0;
+      margin-top: 80px;
+      border-top: 1px solid #232a3a;
+    }
+    a.email {
+      color: #1ed760;
+      text-decoration: none;
+    }
+    a.email:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <!-- Top Bar -->
-  <header class="topbar">
-    <div class="brand">Sonoby<span>Musica</span></div>
-    <div class="search" role="search">
-      <!-- search icon -->
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="11" cy="11" r="7.2" stroke="currentColor" stroke-width="1.7"/></svg>
-      <input id="search" placeholder="Apa yang ingin kamu cari? (judul / lirik / bahasa)" />
-    </div>
-    <nav class="nav">
-      <a class="active" href="#">Songs</a>
+  <header>
+    <h1>SonobyMusica</h1>
+    <nav>
+      <a href="#">Home</a>
       <a href="mailto:zxroby@gmail.com">Contact</a>
-      <a href="#spotify" class="tag">Spotify</a>
     </nav>
   </header>
 
-  <main class="wrap">
-    <section class="main">
-      <!-- Artist Hero -->
-      <article class="hero">
-        <div class="hero-inner">
-          <div class="avatar">
-            <img alt="Sonoby cover" src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?q=80&w=800&auto=format&fit=crop"/>
-          </div>
-          <div class="artist">
-            <div class="verified">
-              <!-- verified icon -->
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l2.4 1.6 2.8-.4 1.6 2.4 2.8 1-1 2.8 1.6 2.4-2.4 1.6-.4 2.8-2.8-.4L12 21l-2.4-1.6-2.8.4-.4-2.8-2.4-1.6 1.6-2.4-1-2.8 2.8-1 1.6-2.4 2.8.4L12 3z" fill="#3aa6ff22"/><path d="M10.1 12.4l2.2 2.2 4.6-5.5" stroke="#69c2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Artis Terverifikasi
-            </div>
-            <h1>Sonoby</h1>
-            <div class="stats">1 pendengar bulanan • Indonesia</div>
-            <div class="controls">
-              <button class="btn play" id="playHero">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
-                Putar
-              </button>
-              <button class="btn" id="shuffleBtn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M4 20l6-6 4-4"/><path d="M20 10l-6 6H4"/></svg>
-                Acak
-              </button>
-              <button class="btn" id="followBtn">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
-                Mengikuti
-              </button>
-              <a class="btn" href="#spotify">Buka di Spotify</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <div class="section-title">
-        <h2>Populer</h2>
-        <span class="muted">Klik salah satu lagu untuk memutar</span>
-      </div>
-
-      <table class="table" id="tracksTable" aria-label="Daftar lagu populer">
-        <thead>
-          <tr>
-            <th class="idx">#</th>
-            <th>Judul</th>
-            <th>Album</th>
-            <th class="duration" style="width:90px">Durasi</th>
-          </tr>
-        </thead>
-        <tbody id="tracksBody"></tbody>
-      </table>
-    </section>
-
-    <aside class="side">
-      <article class="card">
-        <img class="img" alt="Mix Sonoby" src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"/>
-        <div class="body">
-          <h3>Mix Sonoby</h3>
-          <p>Campuran lagu mellow & pop-EDM ala Sonoby. Putar untuk suasana santai sore.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="body">
-          <h3>Kumpulan Lirik Lagu<\/h3>
-          <p>Semua lirik resmi Sonoby + terjemahan. Kontak: <a class="link" href="mailto:zxroby@gmail.com">zxroby@gmail.com<\/a><\/p>
-        <\/div>
-      <\/article>
-    </aside>
+  <main>
+    <h2>Kumpulan Lirik Lagu</h2>
+    <p>
+      Temukan lirik resmi dari semua lagu Sonoby, lengkap dengan arti dan terjemahannya. 
+      Situs ini dibuat sebagai arsip resmi untuk kamu yang ingin membaca makna di balik setiap karya.
+    </p>
+    <button>Jelajahi Lagu</button>
   </main>
 
-  <!-- Player Bar -->
-  <footer class="player" role="group" aria-label="Pemutar">
-    <div class="now">
-      <div class="thumb" id="nowThumb"></div>
-      <div class="meta">
-        <div class="t" id="nowTitle">Tidak ada lagu yang diputar</div>
-        <div class="s" id="nowSub">—</div>
-      </div>
-    </div>
-    <div class="pctrl">
-      <button class="pbtn" id="prevBtn" aria-label="Sebelumnya">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 6h2v12H6zM20 12L10 6v12l10-6z"/></svg>
-      </button>
-      <button class="pbtn primary" id="toggleBtn" aria-label="Putar/jeda">
-        <svg id="iconPlay" viewBox="0 0 24 24" width="18" height="18" fill="#0d1117"><path d="M8 5v14l11-7z"/></svg>
-        <svg id="iconPause" viewBox="0 0 24 24" width="18" height="18" fill="#0d1117" style="display:none"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
-      </button>
-      <button class="pbtn" id="nextBtn" aria-label="Berikutnya">
-        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18 6h-2v12h2zM4 12l10 6V6L4 12z"/></svg>
-      </button>
-      <div class="bar">
-        <span id="cur" class="muted" style="font-variant-numeric: tabular-nums; width:36px; text-align:right;">0:00</span>
-        <input id="seek" class="range" type="range" value="0" min="0" max="100" step="1" />
-        <span id="dur" class="muted" style="font-variant-numeric: tabular-nums; width:36px;">0:00</span>
-      </div>
-    </div>
-    <div style="justify-self:end" class="muted">
-      <span class="tag">HQ</span>
-    </div>
+  <footer>
+    <p>Hubungi kami di <a href="mailto:zxroby@gmail.com" class="email">zxroby@gmail.com</a></p>
+    <p>© 2025 SonobyMusica. All rights reserved.</p>
   </footer>
-
-  <audio id="audio"></audio>
-
-  <script>
-    // === Dummy data — ganti dengan data kamu ================================
-    const SONGS = [
-      {
-        id: '1',
-        title: 'Sisi Yang Tak Diceritakan',
-        album: 'Single',
-        duration: 187, // 3:07
-        cover: 'https://images.unsplash.com/photo-1526318472351-c75fcf070305?q=80&w=800&auto=format&fit=crop',
-        url: 'assets/audio/sisi-yang-tak-diceritakan.mp3'
-      },
-      {
-        id: '2',
-        title: 'Tetap Kau Pilih Dia',
-        album: 'Single',
-        duration: 196, // 3:16
-        cover: 'https://images.unsplash.com/photo-1496483648148-47c686dc86a8?q=80&w=800&auto=format&fit=crop',
-        url: 'assets/audio/tetap-kau-pilih-dia.mp3'
-      },
-      {
-        id: '3',
-        title: 'Peluklah Dirimu',
-        album: 'Single',
-        duration: 204,
-        cover: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=800&auto=format&fit=crop',
-        url: 'assets/audio/peluklah-dirimu.mp3'
-      }
-    ];
-
-    // === Helpers ============================================================
-    const fmt = (s) => {
-      const m = Math.floor(s / 60), r = Math.floor(s % 60).toString().padStart(2, '0');
-      return `${m}:${r}`;
-    };
-
-    // === Render tracks table ===============================================
-    const body = document.getElementById('tracksBody');
-    SONGS.forEach((song, i) => {
-      const tr = document.createElement('tr');
-      tr.className = 'row';
-      tr.dataset.index = i;
-      tr.innerHTML = `
-        <td class="idx">${i+1}</td>
-        <td>
-          <div style="display:flex; align-items:center; gap:12px;">
-            <div class="thumb"><img alt="${song.title}" src="${song.cover}"></div>
-            <div>
-              <div class="title">${song.title}</div>
-              <div class="subtitle">Sonoby</div>
-            </div>
-          </div>
-        </td>
-        <td class="muted">${song.album}</td>
-        <td class="duration">${fmt(song.duration)}</td>
-      `;
-      body.appendChild(tr);
-    });
-
-    // === Simple player logic ===============================================
-    const audio = document.getElementById('audio');
-    const nowTitle = document.getElementById('nowTitle');
-    const nowSub = document.getElementById('nowSub');
-    const nowThumb = document.getElementById('nowThumb');
-    const toggleBtn = document.getElementById('toggleBtn');
-    const iconPlay = document.getElementById('iconPlay');
-    const iconPause = document.getElementById('iconPause');
-    const seek = document.getElementById('seek');
-    const cur = document.getElementById('cur');
-    const dur = document.getElementById('dur');
-
-    let currentIndex = 0;
-    function load(i){
-      const s = SONGS[i];
-      if(!s) return;
-      currentIndex = i;
-      audio.src = s.url; // ganti ke path file audio kamu
-      nowTitle.textContent = s.title;
-      nowSub.textContent = 'Sonoby';
-      nowThumb.innerHTML = `<img alt="${s.title}" src="${s.cover}" style="width:100%; height:100%; object-fit:cover">`;
-      audio.addEventListener('loadedmetadata', ()=>{
-        seek.max = Math.floor(audio.duration || s.duration);
-        dur.textContent = fmt(audio.duration || s.duration);
-      }, {once:true});
-    }
-
-    function play(){ audio.play(); iconPlay.style.display='none'; iconPause.style.display='block'; }
-    function pause(){ audio.pause(); iconPlay.style.display='block'; iconPause.style.display='none'; }
-
-    body.addEventListener('click', (e)=>{
-      const tr = e.target.closest('tr.row');
-      if(!tr) return;
-      load(Number(tr.dataset.index));
-      play();
-    });
-
-    document.getElementById('playHero').addEventListener('click', ()=>{ load(0); play(); });
-
-    toggleBtn.addEventListener('click', ()=>{ audio.paused ? play() : pause(); });
-    document.getElementById('nextBtn').addEventListener('click', ()=>{ load((currentIndex+1)%SONGS.length); play(); });
-    document.getElementById('prevBtn').addEventListener('click', ()=>{ load((currentIndex-1+SONGS.length)%SONGS.length); play(); });
-
-    audio.addEventListener('timeupdate', ()=>{
-      const t = Math.floor(audio.currentTime || 0);
-      seek.value = t; cur.textContent = fmt(t);
-    });
-
-    seek.addEventListener('input', ()=>{ audio.currentTime = seek.value; });
-    audio.addEventListener('ended', ()=>{ document.getElementById('nextBtn').click(); });
-
-    // Follow button (dummy)
-    const followBtn = document.getElementById('followBtn');
-    let followed = true;
-    followBtn.addEventListener('click', ()=>{
-      followed = !followed; followBtn.innerHTML = followed
-        ? `<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/><path d='M12 5v14'/></svg> Mengikuti`
-        : `<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'><path d='M5 12h14'/></svg> Ikuti`;
-    });
-
-    // Search (client-side filter judul & album)
-    const search = document.getElementById('search');
-    search.addEventListener('input', ()=>{
-      const q = search.value.toLowerCase();
-      [...body.children].forEach((tr, i)=>{
-        const s = SONGS[i];
-        const hit = `${s.title} ${s.album}`.toLowerCase().includes(q);
-        tr.style.display = hit ? '' : 'none';
-      });
-    });
-
-    // Preload first data into player UI (tanpa auto play)
-    load(0);
-  </script>
 </body>
 </html>
